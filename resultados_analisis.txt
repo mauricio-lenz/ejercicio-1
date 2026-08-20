@@ -1,0 +1,20 @@
+RESULTADOS DEL ANÁLISIS ESTÁTICO - MARCO PLANO 2D
+============================================================
+
+PROPIEDADES DE SECCIONES:
+Columna: A = 0.007008 m², I = 0.00011361 m⁴
+Viga: A = 0.1600 m², I = 0.00213333 m⁴
+
+REACCIONES DE APOYO:
+Nodo 1 (Empotrado): Fx = 0.0000 kN, Fy = 0.0000 kN, Mz = 0.0000 kN·m
+Nodo 5 (Articulado): Fx = 0.0000 kN, Fy = 0.0000 kN
+
+FUERZAS INTERNAS:
+Elemento 1: N_i=49.4197, V_i=6.5076, M_i=-30.2785
+              N_j=-49.4197, V_j=-6.5076, M_j=-68.5608
+Elemento 2: N_i=-25.5000, V_i=-0.0000, M_i=76.5000
+              N_j=25.5000, V_j=0.0000, M_j=-0.0000
+Elemento 3: N_i=117.4197, V_i=6.5076, M_i=-7.9392
+              N_j=-117.4197, V_j=-6.5076, M_j=40.4772
+Elemento 4: N_i=117.4197, V_i=-13.4924, M_i=-40.4772
+              N_j=-117.4197, V_j=13.4924, M_j=0.0000
