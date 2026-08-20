@@ -1,20 +1,56 @@
 RESULTADOS DEL ANÁLISIS ESTÁTICO - MARCO PLANO 2D
+Grupo 4 - Proyecto 1
 ============================================================
 
 PROPIEDADES DE SECCIONES:
-Columna: A = 0.007008 m², I = 0.00011361 m⁴
-Viga: A = 0.1600 m², I = 0.00213333 m⁴
+  Columna (Perfil I, Acero A36):
+    bf=200mm, tf=12mm, h=300mm, tw=8mm
+    A = 0.007008 m², I = 0.00011361 m⁴
+
+  Viga (Cuadrada):
+    A = 0.1600 m², I = 0.00213333 m⁴
 
 REACCIONES DE APOYO:
-Nodo 1 (Empotrado): Fx = 0.0000 kN, Fy = 0.0000 kN, Mz = 0.0000 kN·m
-Nodo 5 (Articulado): Fx = 0.0000 kN, Fy = 0.0000 kN
+  Nodo 1 (Empotrado):  Fx=-3.5924 kN, Fy=12.6705 kN, Mz=6.0487 kN·m
+  Nodo 5 (Articulado): Fx=88.5924 kN, Fy=7.3295 kN
 
-FUERZAS INTERNAS:
-Elemento 1: N_i=49.4197, V_i=6.5076, M_i=-30.2785
-              N_j=-49.4197, V_j=-6.5076, M_j=-68.5608
-Elemento 2: N_i=-25.5000, V_i=-0.0000, M_i=76.5000
-              N_j=25.5000, V_j=0.0000, M_j=-0.0000
-Elemento 3: N_i=117.4197, V_i=6.5076, M_i=-7.9392
-              N_j=-117.4197, V_j=-6.5076, M_j=40.4772
-Elemento 4: N_i=117.4197, V_i=-13.4924, M_i=-40.4772
-              N_j=-117.4197, V_j=13.4924, M_j=0.0000
+DESPLAZAMIENTOS:
+  Nodo 1: UX=0.000000mm, UY=0.000000mm, RZ=0.000000°
+  Nodo 2: UX=-0.177185mm, UY=-0.018080mm, RZ=0.044770°
+  Nodo 3: UX=-10.096819mm, UY=-0.018080mm, RZ=0.237678°
+  Nodo 4: UX=-0.066444mm, UY=-0.856379mm, RZ=-0.007267°
+  Nodo 5: UX=0.000000mm, UY=0.000000mm, RZ=0.028167°
+
+FUERZAS INTERNAS POR ELEMENTO:
+
+  Elemento 1 (1-2, L=2.0m, q=17.0kN/m):
+    N_i=+12.6705 kN  V_i=+20.5924 kN  M_i=+11.7154 kN·m
+    N_j=-12.6705 kN  V_j=-20.5924 kN  M_j=+29.4695 kN·m
+    Ecuaciones:
+      N(x) = +12.6705 + (-12.6705)·x
+      V(x) = +20.5924 + (+17.0000)·x
+      M(x) = +11.7154 + (+20.5924)·x + (+8.5000)·x²
+
+  Elemento 2 (2-3, L=3.0m, q=17.0kN/m):
+    N_i=+0.0000 kN  V_i=-25.5000 kN  M_i=-63.7500 kN·m
+    N_j=-0.0000 kN  V_j=+25.5000 kN  M_j=-12.7500 kN·m
+    Ecuaciones:
+      N(x) = +0.0000 + (-0.0000)·x
+      V(x) = -25.5000 + (+17.0000)·x
+      M(x) = -63.7500 + (-25.5000)·x + (+8.5000)·x²
+
+  Elemento 3 (2-4, L=5.0m, q=0.0kN/m):
+    N_i=-88.5924 kN  V_i=+12.6705 kN  M_i=+41.3638 kN·m
+    N_j=+88.5924 kN  V_j=-12.6705 kN  M_j=+21.9886 kN·m
+    Ecuaciones:
+      N(x) = -88.5924 + (+35.4370)·x
+      V(x) = +12.6705 + (+0.0000)·x
+      M(x) = +41.3638 + (+12.6705)·x + (+0.0000)·x²
+
+  Elemento 4 (4-5, L=3.0m, q=0.0kN/m):
+    N_i=-88.5924 kN  V_i=-7.3295 kN  M_i=-21.9886 kN·m
+    N_j=+88.5924 kN  V_j=+7.3295 kN  M_j=+0.0000 kN·m
+    Ecuaciones:
+      N(x) = -88.5924 + (+59.0616)·x
+      V(x) = -7.3295 + (+0.0000)·x
+      M(x) = -21.9886 + (-7.3295)·x + (+0.0000)·x²
