@@ -1,0 +1,270 @@
+﻿======================================================================
+PROPIEDADES GEOM╔TRICAS DE LAS SECCIONES
+======================================================================
+
+Columna - Perfil I (Acero ASTM A36):
+  bf=200mm  tf=12mm  h=300mm  tw=8mm
+  A = 0.007008 m2 = 70.08 cm2
+  I = 0.00011361 m4 = 11360.68 cm4
+
+Viga - Cuadrada 40x40 cm:
+  A = 0.1600 m2 = 1600 cm2
+  I = 0.00213333 m4 = 213333.33 cm4
+
+======================================================================
+M╔TODO MATRICIAL DIRECTO (Verificaci¾n)
+======================================================================
+
+Vector de fuerzas nodales equivalentes (global):
+  Nodo 1: Fx=  -17.0000 kN, Fy=    0.0000 kN, Mz=    5.6667 kN.m
+  Nodo 2: Fx=  -42.5000 kN, Fy=    0.0000 kN, Mz=    7.0833 kN.m
+  Nodo 3: Fx=  -25.5000 kN, Fy=    0.0000 kN, Mz=  -12.7500 kN.m
+  Nodo 4: Fx=    0.0000 kN, Fy=  -20.0000 kN, Mz=    0.0000 kN.m
+  Nodo 5: Fx=    0.0000 kN, Fy=    0.0000 kN, Mz=    0.0000 kN.m
+
+Desplazamientos (libres):
+  Nodo 2 UX = -0.00017718 m = -0.177185 mm
+  Nodo 2 UY = -0.00001808 m = -0.018080 mm
+  Nodo 2 RZ = 0.00078139 rad = 0.044770deg
+  Nodo 3 UX = -0.01009682 m = -10.096819 mm
+  Nodo 3 UY = -0.00001808 m = -0.018080 mm
+  Nodo 3 RZ = 0.00414826 rad = 0.237678deg
+  Nodo 4 UX = -0.00006644 m = -0.066444 mm
+  Nodo 4 UY = -0.00085638 m = -0.856379 mm
+  Nodo 4 RZ = -0.00012683 rad = -0.007267deg
+  Nodo 5 RZ = 0.00049160 rad = 0.028167deg
+
+Reacciones de apoyo:
+  Nodo 1 (Empotrado):  Fx = -3.5924 kN, Fy = 12.6705 kN, Mz = 6.0487 kN.m
+  Nodo 5 (Articulado): Fx = 88.5924 kN, Fy = 7.3295 kN
+
+Verificaci¾n de equilibrio global:
+  SumFx = 85.0000 kN  (carga: 85.0000 kN)
+  SumFy = 20.0000 kN  (carga: -20.0000 kN)
+
+Fuerzas internas por elemento (coordenadas locales):
+
+  Elemento 1 (1-2, L=2.0 m):
+    N_i =    12.6705 kN   V_i =    20.5924 kN   M_i =    11.7154 kN.m
+    N_j =   -12.6705 kN   V_j =   -20.5924 kN   M_j =    29.4695 kN.m
+
+  Elemento 2 (2-3, L=3.0 m):
+    N_i =     0.0000 kN   V_i =   -25.5000 kN   M_i =   -63.7500 kN.m
+    N_j =    -0.0000 kN   V_j =    25.5000 kN   M_j =   -12.7500 kN.m
+
+  Elemento 3 (2-4, L=5.0 m):
+    N_i =   -88.5924 kN   V_i =    12.6705 kN   M_i =    41.3638 kN.m
+    N_j =    88.5924 kN   V_j =   -12.6705 kN   M_j =    21.9886 kN.m
+
+  Elemento 4 (4-5, L=3.0 m):
+    N_i =   -88.5924 kN   V_i =    -7.3295 kN   M_i =   -21.9886 kN.m
+    N_j =    88.5924 kN   V_j =     7.3295 kN   M_j =     0.0000 kN.m
+
+======================================================================
+VERIFICACIËN CON OPENSEESPY
+======================================================================
+  OpenSeesPy no compatible con esta version de Python.
+  Se utiliza exclusivamente el metodo matricial directo.
+
+
+======================================================================
+ECUACIONES DE FUERZAS INTERNAS POR TRAMO
+======================================================================
+
+Elemento 1 (1-2), L = 2.0 m, q = 17.0 kN/m:
+  N(x) = +12.6705 + (-12.6705).x
+  V(x) = +20.5924 + (+17.0000).x
+  M(x) = +11.7154 + (+20.5924).x + (+8.5000).x2
+  Valores notables:
+    x=0: N=+12.6705 kN, V=+20.5924 kN, M=+11.7154 kN.m
+    x=2.0: N=-12.6705 kN, V=+54.5924 kN, M=+86.9003 kN.m
+
+Elemento 2 (2-3), L = 3.0 m, q = 17.0 kN/m:
+  N(x) = +0.0000 + (-0.0000).x
+  V(x) = -25.5000 + (+17.0000).x
+  M(x) = -63.7500 + (-25.5000).x + (+8.5000).x2
+  ** Punto de V=0 en x = 1.5000 m
+  ** Mximo local: M = -82.8750 kN.m
+  Valores notables:
+    x=0: N=+0.0000 kN, V=-25.5000 kN, M=-63.7500 kN.m
+    x=3.0: N=-0.0000 kN, V=+25.5000 kN, M=-63.7500 kN.m
+
+Elemento 3 (2-4), L = 5.0 m, q = 0.0 kN/m:
+  N(x) = -88.5924 + (+35.4370).x
+  V(x) = +12.6705 + (+0.0000).x
+  M(x) = +41.3638 + (+12.6705).x + (+0.0000).x2
+  Valores notables:
+    x=0: N=-88.5924 kN, V=+12.6705 kN, M=+41.3638 kN.m
+    x=5.0: N=+88.5924 kN, V=+12.6705 kN, M=+104.7162 kN.m
+
+Elemento 4 (4-5), L = 3.0 m, q = 0.0 kN/m:
+  N(x) = -88.5924 + (+59.0616).x
+  V(x) = -7.3295 + (+0.0000).x
+  M(x) = -21.9886 + (-7.3295).x + (+0.0000).x2
+  Valores notables:
+    x=0: N=-88.5924 kN, V=-7.3295 kN, M=-21.9886 kN.m
+    x=3.0: N=+88.5924 kN, V=-7.3295 kN, M=-43.9772 kN.m
+
+======================================================================
+GENERANDO DIAGRAMAS...
+======================================================================
+  Guardado: diagrama_n.png
+  Guardado: diagrama_v.png
+  Guardado: diagrama_m.png
+
+
+######################################################################
+#                                                                    #
+#         RESULTADOS DEL AN┴LISIS EST┴TICO - MARCO PLANO 2D          #
+#                        Grupo 4 - Proyecto 1                        #
+#                                                                    #
+######################################################################
+
+======================================================================
+  1. PROPIEDADES DE SECCIONES
+======================================================================
+
+  COLUMNA - Perfil I (Acero ASTM A36, E = 200 GPa)
+  -----------------------------------------------
+    bf (ancho de ala)     = 200 mm
+    tf (espesor de ala)   = 12 mm
+    h  (alto total)       = 300 mm
+    tw (espesor de alma)  = 8 mm
+    Area   A = 0.007008 m2  =  70.08 cm2
+    Inercia I = 0.00011361 m4  =  11360.68 cm4
+
+  VIGA - Seccion Cuadrada (Hormigon, E = 25 GPa)
+  -----------------------------------------------
+    Dimension = 40 cm x 40 cm
+    Area   A = 0.1600 m2  =  1600 cm2
+    Inercia I = 0.00213333 m4  =  213333.33 cm4
+
+======================================================================
+  2. REACCIONES DE APOYO
+======================================================================
+
+  Nodo 1 - Empotramiento (base de la columna)
+  -------------------------------------------
+    Fx  =  -3.5924 kN
+    Fy  =  +12.6705 kN
+    Mz  =  +6.0487 kN.m
+
+  Nodo 5 - Apoyo Articulado (extremo derecho de la viga)
+  ------------------------------------------------------
+    Fx  =  +88.5924 kN
+    Fy  =  +7.3295 kN
+
+======================================================================
+  3. VERIFICACION DE EQUILIBRIO GLOBAL
+======================================================================
+
+  Carga total horizontal (columna):  q x L = 17.0 x 5 = 85.00 kN
+  Carga total vertical   (viga):     F = 20.00 kN
+
+  Sum Fx (reacciones) = 85.0000 kN   ===  85.00 kN  (OK)
+  Sum Fy (reacciones) = 20.0000 kN   ===  20.00 kN   (OK)
+
+======================================================================
+  4. DESPLAZAMIENTOS DE NODOS
+======================================================================
+
+  Nodo  |   UX (mm)    |   UY (mm)    |   RZ (deg)
+  ------|--------------|--------------|------------
+      1 |         ---  |         ---  |         ---   (restringido)
+      2 |     -0.1772  |     -0.0181  |   +0.044770
+      3 |    -10.0968  |     -0.0181  |   +0.237678
+      4 |     -0.0664  |     -0.8564  |   -0.007267
+      5 |         ---  |         ---  |   +0.028167
+
+======================================================================
+  5. FUERZAS INTERNAS POR ELEMENTO (coordenadas locales)
+======================================================================
+
+  Elemento 1 (Columna, Nodos 1-2, L = 2.0 m, q = 17.0 kN/m)
+  ------------------------------------------------------------
+    En Nodo i (x = 0):
+      Axial   N =   +12.6705 kN
+      Cortante V =   +20.5924 kN
+      Momento  M =   +11.7154 kN.m
+
+    En Nodo j (x = 2.0 m):
+      Axial   N =   -12.6705 kN
+      Cortante V =   -20.5924 kN
+      Momento  M =   +29.4695 kN.m
+
+    Ecuaciones:
+      N(x) = +12.6705 + (-12.6705) * x   [kN]
+      V(x) = +20.5924 + (+17.0000) * x              [kN]
+      M(x) = +11.7154 + (+20.5924) * x + (+8.5000) * x2   [kN.m]
+
+  Elemento 2 (Columna, Nodos 2-3, L = 3.0 m, q = 17.0 kN/m)
+  ------------------------------------------------------------
+    En Nodo i (x = 0):
+      Axial   N =    +0.0000 kN
+      Cortante V =   -25.5000 kN
+      Momento  M =   -63.7500 kN.m
+
+    En Nodo j (x = 3.0 m):
+      Axial   N =    -0.0000 kN
+      Cortante V =   +25.5000 kN
+      Momento  M =   -12.7500 kN.m
+
+    Punto notable (V = 0):
+      x = 1.5000 m
+      M =   -82.8750 kN.m  (momento maximo local)
+
+    Ecuaciones:
+      N(x) = +0.0000 + (-0.0000) * x   [kN]
+      V(x) = -25.5000 + (+17.0000) * x              [kN]
+      M(x) = -63.7500 + (-25.5000) * x + (+8.5000) * x2   [kN.m]
+
+  Elemento 3 (Viga, Nodos 2-4, L = 5.0 m, q = 0.0 kN/m)
+  ------------------------------------------------------------
+    En Nodo i (x = 0):
+      Axial   N =   -88.5924 kN
+      Cortante V =   +12.6705 kN
+      Momento  M =   +41.3638 kN.m
+
+    En Nodo j (x = 5.0 m):
+      Axial   N =   +88.5924 kN
+      Cortante V =   -12.6705 kN
+      Momento  M =   +21.9886 kN.m
+
+    Ecuaciones:
+      N(x) = -88.5924 + (+35.4370) * x   [kN]
+      V(x) = +12.6705 + (+0.0000) * x              [kN]
+      M(x) = +41.3638 + (+12.6705) * x + (+0.0000) * x2   [kN.m]
+
+  Elemento 4 (Viga, Nodos 4-5, L = 3.0 m, q = 0.0 kN/m)
+  ------------------------------------------------------------
+    En Nodo i (x = 0):
+      Axial   N =   -88.5924 kN
+      Cortante V =    -7.3295 kN
+      Momento  M =   -21.9886 kN.m
+
+    En Nodo j (x = 3.0 m):
+      Axial   N =   +88.5924 kN
+      Cortante V =    +7.3295 kN
+      Momento  M =    +0.0000 kN.m
+
+    Ecuaciones:
+      N(x) = -88.5924 + (+59.0616) * x   [kN]
+      V(x) = -7.3295 + (+0.0000) * x              [kN]
+      M(x) = -21.9886 + (-7.3295) * x + (+0.0000) * x2   [kN.m]
+
+
+======================================================================
+  6. DIAGRAMAS GENERADOS
+======================================================================
+
+  - diagrama_n.png  -->  Diagrama de Fuerza Axial (N)
+  - diagrama_v.png  -->  Diagrama de Fuerza Cortante (V)
+  - diagrama_m.png  -->  Diagrama de Momento Flector (M)
+
+  Archivos generados en la carpeta del proyecto.
+
+======================================================================
+  FIN DEL ANALISIS
+======================================================================
+
+Resultados exportados a 'resultados_analisis.txt'
